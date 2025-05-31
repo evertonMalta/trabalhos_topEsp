@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from tabulate import tabulate
 from utils import *
-from model import create_tables
+from model import Create_tables
 from view import General, Menu, Menu_Admin
 
 from controller import Controller
@@ -47,7 +47,7 @@ def Menu_Admin_Controller():
                    #crir
                     Clear()
                     name, user_name, password = Menu_Admin.Create_user_menu()
-                    Controller.create_user(name, user_name, password )
+                    Controller.Create_user(name, user_name, password )
 
                 elif(subOpc == 2):
                     Clear()
@@ -56,13 +56,13 @@ def Menu_Admin_Controller():
                 elif(subOpc == 3):
                     #listar
                     Clear()
-                    Menu_Admin.List_user_menu(Controller.get_all_users())
+                    Menu_Admin.List_user_menu(Controller.Get_all_users())
 
                 elif(subOpc == 4):
                     #deletar
                     Clear()
                     id = Menu_Admin.Delete_user_menu()
-                    result = Controller.delete_user(id)
+                    result = Controller.Delete_user(id)
                     print("Usuario deletado" if result == 1 else "Erro ao deletar!")                   
                     input("\nAperte Enter para sair!")
                     
@@ -83,7 +83,7 @@ def Menu_Admin_Controller():
                    #crir
                     Clear()
                     name, manufacturer, price_per_hour = Menu_Admin.Create_car_menu()
-                    Controller.create_car(name, manufacturer, price_per_hour )
+                    Controller.Create_car(name, manufacturer, price_per_hour )
 
                 elif(subOpc == 2):
                     Clear()
@@ -92,13 +92,13 @@ def Menu_Admin_Controller():
                 elif(subOpc == 3):
                     #listar
                     Clear()
-                    Menu_Admin.List_car_menu(Controller.get_all_cars())
+                    Menu_Admin.List_car_menu(Controller.Get_all_cars())
 
                 elif(subOpc == 4):
                     #deletar
                     Clear()
                     id = Menu_Admin.Delete_car_menu()
-                    result = Controller.delete_car(id)
+                    result = Controller.Delete_car(id)
                     print("Carro deletado" if result == 1 else "Erro ao deletar!")                   
                     input("\nAperte Enter para sair!")
                     
@@ -116,7 +116,7 @@ def Menu_Admin_Controller():
                    #crir
                     Clear()
                     name,hex  = Menu_Admin.Create_color_menu()
-                    Controller.create_color(name, hex)
+                    Controller.Create_color(name, hex)
 
                 elif(subOpc == 2):
                     Clear()
@@ -131,7 +131,7 @@ def Menu_Admin_Controller():
                     #deletar
                     Clear()
                     id = Menu_Admin.Delete_color_menu()
-                    result = Controller.delete_color(id)
+                    result = Controller.Delete_color(id)
                     print("Cor deletado" if result == 1 else "Erro ao deletar!")                   
                     input("\nAperte Enter para sair!")
                     
@@ -143,7 +143,7 @@ def Menu_Admin_Controller():
         elif(opc == 4):
             Clear()
             #Export
-            Controller.export_to_json()
+            Controller.Export_to_json()
         elif(opc == 5):
             Clear()
             #Import
@@ -154,20 +154,22 @@ def Menu_Admin_Controller():
                     Clear()
                     print("---Importar arquivo---")
                     path = input("Digite o caminho do arquivo: ")
-                    Controller.import_from_json(path)
+                    Controller.Import_from_json(path)
 
                 elif(subOpc == 2):
                     Clear()
                     print("---Importar URL---")
                     url = input("Digite o URL: ")
-                    Controller.import_from_url(url)
+                    Controller.Import_from_url(url)
 
                 elif(subOpc == 0):
                     Clear()                    
                     print("Saindo")
                 else:
                     Error()
-
+        elif(opc == 6):
+            Clear()
+            General.About()
         elif(opc == 0):
             Clear()
             print("Saindo")
@@ -215,5 +217,4 @@ def Login():
 
 
 if __name__ == "__main__":
-   ## Main()
-   Controller.import_from_json()
+   Main()

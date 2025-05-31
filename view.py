@@ -35,6 +35,15 @@ class Menu:
         opc = TryParseOpcInput(input("Escolha a opção: "))
         return opc
     
+    def Register_parking_Menu():
+        print("---Registrar Entrada---")
+        id = input("Digite o id de carro: ")
+        return id
+
+    def Check_parking(parking):
+        print("---Conferir estacionamento---")
+        print(tabulate(parking, headers="keys",tablefmt='orgtbl'))
+        input("\nAperte Enter para sair!")
 
 
 
@@ -47,6 +56,7 @@ class Menu_Admin:
         print("3 - Cores")
         print("4 - Exportar Json")
         print("5 - Importar Json")
+        print("6 - Sobre")
         print("0 - Finalizar seção")
 
         opc = TryParseOpcInput(input("Escolha a opção: "))

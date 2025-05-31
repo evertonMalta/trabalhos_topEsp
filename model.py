@@ -50,7 +50,7 @@ class Parking(BaseModel):
     final_price = FloatField(null=True)
 
 
-def create_tables():
+def Create_tables():
     with db:
         db.create_tables([User, Car, Color, Parking])
 
