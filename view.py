@@ -30,14 +30,24 @@ class Menu:
         print("2 - Registrar Saida do carro")
         print("3 - Conferir estacionamento")
         print("4 - Fechar caixa")
+        print("5 - Sobre")
         print("0 - Finalizar seção")
 
         opc = TryParseOpcInput(input("Escolha a opção: "))
         return opc
     
-    def Register_parking_Menu():
+    def Register_Entry_Menu():
         print("---Registrar Entrada---")
-        id = input("Digite o id de carro: ")
+        plate = input("Digite Placa do veiculo: ")        
+        car_id = input("Digite id do veiculo: ")
+        color_id = input("Digite id cor: ")
+
+        return plate, car_id, color_id
+    
+    def Register_Departure_Menu():
+        print("---Registrar Saida---")
+        id = input("Digite o Id de entrada: ")
+
         return id
 
     def Check_parking(parking):

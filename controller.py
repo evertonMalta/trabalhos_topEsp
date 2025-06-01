@@ -88,7 +88,7 @@ class Controller:
     def Register_parking(plate, car_id, color_id, entry_user_id):
         return Parking.create(
             plate=plate,
-            car=car_id,
+            car=Car.get_by_id(car_id),
             color=color_id,
             entry_user=entry_user_id
         )
@@ -100,20 +100,27 @@ class Controller:
         return list(Parking.select().where(Parking.is_it_parked == True).dicts())
 
 
-    def Calculate_final_price():
-        datetime.datetime.now()
+    
 
-    def Finish_parking(parking_id, departure_user_id, final_price,departure_date ):
+    def Finish_parking(parking_id, departure_user_id ):
         try:
             parking = Parking.get_by_id(parking_id)
+
+            price_per_hour = Car.get_by_id(parking.car.id).price_per_hour
+
+
+            departure_date = datetime.now()
+            time_of_parking = abs((parking.entry_date - departure_date).total_seconds() / 60.0 / 60.0 )
+            final_price =  time_of_parking * price_per_hour
+
             parking.departure_date = departure_date 
             parking.departure_user = departure_user_id
             parking.final_price = final_price
             parking.is_it_parked = False
             parking.save()
-            return True
+            return True , final_price,time_of_parking
         except DoesNotExist:
-            return False
+            return False , None, None
 
     def Delete_parking(parking_id):
         return Parking.delete().where(Parking.id == parking_id).execute()

@@ -1,146 +1,218 @@
 {
-  "users": [
-    {
-      "id": 1,
-      "name": "Admin",
-      "user_name": "admin",
-      "password": "1234",
-      "is_admin": true,
-      "is_active": true,
-      "created_on": "2024-05-01T09:00:00"
-    },
-    {
-      "id": 2,
-      "name": "Maria",
-      "user_name": "maria",
-      "password": "abcd",
-      "is_admin": false,
-      "is_active": true,
-      "created_on": "2024-05-02T10:30:00"
-    },
-    {
-      "id": 3,
-      "name": "João",
-      "user_name": "joao",
-      "password": "senha123",
-      "is_admin": false,
-      "is_active": true,
-      "created_on": "2024-05-03T11:15:00"
-    },
-    {
-      "id": 4,
-      "name": "Carla",
-      "user_name": "carla",
-      "password": "minhasenha",
-      "is_admin": false,
-      "is_active": true,
-      "created_on": "2024-05-04T08:45:00"
-    }
-  ],
-  "cars": [
-    {
-      "id": 1,
-      "name": "HB20",
-      "manufacturer": "Hyundai",
-      "created_on": "2024-05-01T08:00:00",
-      "price_per_hour": 10.0
-    },
-    {
-      "id": 2,
-      "name": "Onix",
-      "manufacturer": "Chevrolet",
-      "created_on": "2024-05-01T08:10:00",
-      "price_per_hour": 8.5
-    },
-    {
-      "id": 3,
-      "name": "Civic",
-      "manufacturer": "Honda",
-      "created_on": "2024-05-02T09:00:00",
-      "price_per_hour": 12.0
-    },
-    {
-      "id": 4,
-      "name": "Corolla",
-      "manufacturer": "Toyota",
-      "created_on": "2024-05-03T10:00:00",
-      "price_per_hour": 11.0
-    }
-  ],
-  "colors": [
-    {
-      "id": 1,
-      "name": "Branco",
-      "hex": "#FFFFFF",
-      "created_on": "2024-05-01T08:00:00"
-    },
-    {
-      "id": 2,
-      "name": "Preto",
-      "hex": "#000000",
-      "created_on": "2024-05-01T08:05:00"
-    },
-    {
-      "id": 3,
-      "name": "Prata",
-      "hex": "#C0C0C0",
-      "created_on": "2024-05-02T09:10:00"
-    },
-    {
-      "id": 4,
-      "name": "Azul",
-      "hex": "#0000FF",
-      "created_on": "2024-05-02T09:20:00"
-    }
-  ],
-  "parkings": [
-    {
-      "id": 1,
-      "plate": "ABC-1234",
-      "car": 1,
-      "color": 1,
-      "is_it_parked": false,
-      "entry_date": "2024-05-01T09:15:00",
-      "departure_date": "2024-05-01T12:15:00",
-      "entry_user": 1,
-      "departure_user": 2,
-      "final_price": 30.0
-    },
-    {
-      "id": 2,
-      "plate": "XYZ-5678",
-      "car": 2,
-      "color": 2,
-      "is_it_parked": true,
-      "entry_date": "2024-05-02T10:00:00",
-      "departure_date": null,
-      "entry_user": 2,
-      "departure_user": null,
-      "final_price": null
-    },
-    {
-      "id": 3,
-      "plate": "DEF-9876",
-      "car": 3,
-      "color": 3,
-      "is_it_parked": false,
-      "entry_date": "2024-05-03T11:00:00",
-      "departure_date": "2024-05-03T14:30:00",
-      "entry_user": 3,
-      "departure_user": 4,
-      "final_price": 42.0
-    },
-    {
-      "id": 4,
-      "plate": "GHI-2468",
-      "car": 4,
-      "color": 4,
-      "is_it_parked": true,
-      "entry_date": "2024-05-04T09:45:00",
-      "departure_date": null,
-      "entry_user": 4,
-      "departure_user": null,
-      "final_price": null
-    }
-  ]
+    "users": [
+        {
+            "id": 1,
+            "name": "Admin",
+            "user_name": "admin",
+            "password": "1234",
+            "is_admin": true,
+            "is_active": true,
+            "created_on": "2024-05-01T09:00:00"
+        },
+        {
+            "id": 2,
+            "name": "Maria",
+            "user_name": "maria",
+            "password": "abcd",
+            "is_admin": false,
+            "is_active": true,
+            "created_on": "2024-05-02T10:30:00"
+        },
+        {
+            "id": 3,
+            "name": "João",
+            "user_name": "joao",
+            "password": "senha123",
+            "is_admin": false,
+            "is_active": true,
+            "created_on": "2024-05-03T11:15:00"
+        },
+        {
+            "id": 4,
+            "name": "Carla",
+            "user_name": "carla",
+            "password": "minhasenha",
+            "is_admin": false,
+            "is_active": true,
+            "created_on": "2024-05-04T08:45:00"
+        }
+    ],
+    "cars": [
+        {
+            "id": 1,
+            "name": "HB20",
+            "manufacturer": "Hyundai",
+            "created_on": "2024-05-01T08:00:00",
+            "price_per_hour": 10.0
+        },
+        {
+            "id": 2,
+            "name": "Onix",
+            "manufacturer": "Chevrolet",
+            "created_on": "2024-05-01T08:10:00",
+            "price_per_hour": 8.5
+        },
+        {
+            "id": 3,
+            "name": "Civic",
+            "manufacturer": "Honda",
+            "created_on": "2024-05-02T09:00:00",
+            "price_per_hour": 12.0
+        },
+        {
+            "id": 4,
+            "name": "Corolla",
+            "manufacturer": "Toyota",
+            "created_on": "2024-05-03T10:00:00",
+            "price_per_hour": 11.0
+        }
+    ],
+    "colors": [
+        {
+            "id": 1,
+            "name": "Branco",
+            "hex": "#FFFFFF",
+            "created_on": "2024-05-01T08:00:00"
+        },
+        {
+            "id": 2,
+            "name": "Preto",
+            "hex": "#000000",
+            "created_on": "2024-05-01T08:05:00"
+        },
+        {
+            "id": 3,
+            "name": "Prata",
+            "hex": "#C0C0C0",
+            "created_on": "2024-05-02T09:10:00"
+        },
+        {
+            "id": 4,
+            "name": "Azul",
+            "hex": "#0000FF",
+            "created_on": "2024-05-02T09:20:00"
+        }
+    ],
+    "parkings": [
+        {
+            "id": 1,
+            "plate": "ABC-1234",
+            "car": 1,
+            "color": 1,
+            "is_it_parked": true,
+            "entry_date": "2024-05-01T09:15:00",
+            "departure_date": "2024-05-01T12:15:00",
+            "entry_user": 1,
+            "departure_user": 2,
+            "final_price": 30.0
+        },
+        {
+            "id": 2,
+            "plate": "XYZ-5678",
+            "car": 2,
+            "color": 2,
+            "is_it_parked": true,
+            "entry_date": "2024-05-02T10:00:00",
+            "departure_date": "2025-05-31T22:26:56.174615",
+            "entry_user": 2,
+            "departure_user": 2,
+            "final_price": 1272439800.0
+        },
+        {
+            "id": 3,
+            "plate": "DEF-9876",
+            "car": 3,
+            "color": 3,
+            "is_it_parked": true,
+            "entry_date": "2024-05-03T11:00:00",
+            "departure_date": "2024-05-03T14:30:00",
+            "entry_user": 3,
+            "departure_user": 4,
+            "final_price": 42.0
+        },
+        {
+            "id": 4,
+            "plate": "GHI-2468",
+            "car": 4,
+            "color": 4,
+            "is_it_parked": true,
+            "entry_date": "2024-05-04T09:45:00",
+            "departure_date": "2025-05-31T22:28:25.440849",
+            "entry_user": 4,
+            "departure_user": 2,
+            "final_price": 1607522400.0
+        },
+        {
+            "id": 5,
+            "plate": "1",
+            "car": 2,
+            "color": 1,
+            "is_it_parked": true,
+            "entry_date": "2025-05-31T22:18:26.181620",
+            "departure_date": null,
+            "entry_user": 2,
+            "departure_user": null,
+            "final_price": null
+        },
+        {
+            "id": 6,
+            "plate": "aaa-aaaa",
+            "car": 2,
+            "color": 2,
+            "is_it_parked": false,
+            "entry_date": "2025-05-31T22:31:16.372825",
+            "departure_date": "2025-05-31T22:32:04.605039",
+            "entry_user": 2,
+            "departure_user": 2,
+            "final_price": 2642340600.0
+        },
+        {
+            "id": 7,
+            "plate": "1",
+            "car": 1,
+            "color": 1,
+            "is_it_parked": false,
+            "entry_date": "2025-05-31T22:33:31.065735",
+            "departure_date": "2025-05-31T22:33:49.902225",
+            "entry_user": 2,
+            "departure_user": 2,
+            "final_price": 239.94722222222222
+        },
+        {
+            "id": 8,
+            "plate": "aaaaaa",
+            "car": 1,
+            "color": 1,
+            "is_it_parked": false,
+            "entry_date": "2025-05-31T22:35:35.959112",
+            "departure_date": "2025-05-31T22:35:56.452107",
+            "entry_user": 2,
+            "departure_user": 2,
+            "final_price": 3.999027777777778
+        },
+        {
+            "id": 9,
+            "plate": "1",
+            "car": 1,
+            "color": 1,
+            "is_it_parked": false,
+            "entry_date": "2025-05-31T22:41:50.049994",
+            "departure_date": "2025-05-31T22:41:59.249965",
+            "entry_user": 2,
+            "departure_user": 2,
+            "final_price": 3.9995370370370367
+        },
+        {
+            "id": 10,
+            "plate": "1",
+            "car": 1,
+            "color": 1,
+            "is_it_parked": false,
+            "entry_date": "2025-05-31T22:44:01.238800",
+            "departure_date": "2025-05-31T22:44:05.344468",
+            "entry_user": 2,
+            "departure_user": 2,
+            "final_price": 0.011404633333333334
+        }
+    ]
 }

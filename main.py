@@ -16,16 +16,49 @@ def Main():
     if(current_user.is_admin):
         Menu_Admin_Controller()
     else:
-        Menu_Controller()
+        Menu_Controller(current_user)
 
 
 
-def Menu_Controller():
+def Menu_Controller(current_user):
     opc  = -1
     subOpc = -1
     while(opc != 0):
         Clear()
         opc =  Menu.Main_menu()
+        if(opc == 1):
+            Clear()
+            plate, car_id, color_id = Menu.Register_Entry_Menu()
+
+            result = Controller.Register_parking(plate, car_id, color_id, current_user.id)
+            
+            print("Veiculo Registrado" if result == 1 else "Erro ao Registrar!")   
+
+
+        elif(opc == 2):
+            Clear()
+            id = Menu.Register_Departure_Menu()
+
+            result, final_price,time_of_parking = Controller.Finish_parking(id,current_user.id)
+            
+            print(f"Saida Realiza!\n\nValor a Receber: R${round(final_price,2)}\nTempo de estacionamento: {time_of_parking} " if result == True else "Erro ao dar Baixa!")  
+            input("Aperte Enter Confirmar!")
+
+        elif(opc == 3):
+            Clear()
+            Menu.Check_parking(Controller.Get_parkings_cars())
+
+        elif(opc == 4):
+            Clear()
+        elif(opc == 5):
+            Clear()
+            General.About()
+        elif(opc == 0):
+            Clear()                    
+            print("Saindo")
+        else:
+            Error()
+
 
 
    
@@ -144,10 +177,13 @@ def Menu_Admin_Controller():
             Clear()
             #Export
             Controller.Export_to_json()
+            input("\nAperte Enter para sair!")
+
         elif(opc == 5):
-            Clear()
+            
             #Import
             while subOpc !=0:
+                Clear()
                 subOpc = Menu_Admin.Import()
 
                 if(subOpc == 1):                  
@@ -155,12 +191,15 @@ def Menu_Admin_Controller():
                     print("---Importar arquivo---")
                     path = input("Digite o caminho do arquivo: ")
                     Controller.Import_from_json(path)
+                    input("\nAperte Enter para sair!")
 
                 elif(subOpc == 2):
                     Clear()
                     print("---Importar URL---")
                     url = input("Digite o URL: ")
                     Controller.Import_from_url(url)
+                    input("\nAperte Enter para sair!")
+                    
 
                 elif(subOpc == 0):
                     Clear()                    
@@ -189,7 +228,7 @@ def Login():
         Clear()
         user_name, password = General.Login()
 
-        user = Controller.login_user(user_name,password)
+        user = Controller.Login_user(user_name,password)
        
 
         if user == None:
