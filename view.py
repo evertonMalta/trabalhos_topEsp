@@ -1,13 +1,13 @@
-
 # -*- coding: utf-8 -*-
 from tabulate import tabulate
 from utils import *
+from getpass import getpass
 
 class General:
     def Login():
         print("---Login---")
         user_name = input("Usuario: ")
-        password =  input("Senha: ")
+        password =  getpass("Senha: ")
         return user_name, password
     
     def About():

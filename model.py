@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from peewee import *
 import datetime
 
@@ -43,6 +44,7 @@ class Parking(BaseModel):
     car = ForeignKeyField(Car, backref='parkings')
     color = ForeignKeyField(Color, backref='parkings')
     is_it_parked = BooleanField(default=True)
+    has_reported = BooleanField(default=False)
     entry_date = DateTimeField(default=datetime.datetime.now)
     departure_date = DateTimeField(null=True)
     entry_user = ForeignKeyField(User, backref='entries')

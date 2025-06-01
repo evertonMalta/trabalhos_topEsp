@@ -1,11 +1,10 @@
 # -*- coding: utf-8 -*-
 from tabulate import tabulate
 from utils import *
-from model import Create_tables
+from model import Create_tables, Parking
 from view import General, Menu, Menu_Admin
 
 from controller import Controller
-
 
 
 def Main():
@@ -22,7 +21,6 @@ def Main():
 
 def Menu_Controller(current_user):
     opc  = -1
-    subOpc = -1
     while(opc != 0):
         Clear()
         opc =  Menu.Main_menu()
@@ -50,9 +48,30 @@ def Menu_Controller(current_user):
 
         elif(opc == 4):
             Clear()
+
+            result, parking,total_income, = Controller.Create_Report()
+
+            try:
+                report_date = datetime.now()
+                text = "---Relatorio de fachamento de caixa----"
+                text += f"\n\nUsuario: {current_user.name}   data: {report_date}"
+                text += f"\n\n{tabulate(parking, headers="keys",tablefmt='orgtbl')}"
+                text += f"\n\nTotal: R${total_income}"
+
+                with open(f"Report_{report_date.strftime('%d-%m-%Y')}.txt", "w") as f:
+                    f.writelines(text)
+                print(text)
+                
+            except Exception as e:
+                print("Erro ao gerar relatório:", e)
+                
+
+            input("Aperte Enter para continuar!")
+
         elif(opc == 5):
             Clear()
             General.About()
+
         elif(opc == 0):
             Clear()                    
             print("Saindo")
@@ -68,6 +87,7 @@ def Menu_Admin_Controller():
     subOpc = -1
     while(opc != 0):
         Clear()
+        subOpc = -1
         opc = Menu_Admin.Main_menu()
         
 
@@ -190,7 +210,10 @@ def Menu_Admin_Controller():
                     Clear()
                     print("---Importar arquivo---")
                     path = input("Digite o caminho do arquivo: ")
-                    Controller.Import_from_json(path)
+                    if path == "":
+                        Controller.Import_from_json()
+                    else:
+                        Controller.Import_from_json(path)
                     input("\nAperte Enter para sair!")
 
                 elif(subOpc == 2):
@@ -239,16 +262,10 @@ def Login():
 
     return user
         
-
-
-
-
-
-
-    
-
-
- 
+def First_init():
+    if(os.path.isfile("./estacionamento.db") == False):
+        Create_tables()
+        Controller.Create_user("Admin","admin","1234",True,True)
 
 
 
@@ -256,4 +273,7 @@ def Login():
 
 
 if __name__ == "__main__":
+   First_init()
    Main()
+   
+   

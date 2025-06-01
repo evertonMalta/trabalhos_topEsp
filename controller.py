@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from model import db,User, Car, Color, Parking
 from datetime import datetime
 from peewee import DoesNotExist
@@ -99,7 +100,7 @@ class Controller:
     def Get_parkings_cars():
         return list(Parking.select().where(Parking.is_it_parked == True).dicts())
 
-
+    
     
 
     def Finish_parking(parking_id, departure_user_id ):
@@ -111,7 +112,7 @@ class Controller:
 
             departure_date = datetime.now()
             time_of_parking = abs((parking.entry_date - departure_date).total_seconds() / 60.0 / 60.0 )
-            final_price =  time_of_parking * price_per_hour
+            final_price =  round(time_of_parking * price_per_hour, 2) 
 
             parking.departure_date = departure_date 
             parking.departure_user = departure_user_id
@@ -121,6 +122,31 @@ class Controller:
             return True , final_price,time_of_parking
         except DoesNotExist:
             return False , None, None
+        
+    def Create_Report():
+        try:
+            total_income = 0
+            parking = Parking.select().where(Parking.has_reported == False and Parking.is_it_parked == False).dicts()
+
+           
+            total_income = (Parking
+                        .select(fn.SUM(Parking.final_price))
+                        .where((Parking.has_reported == False) & (Parking.is_it_parked == False))
+                        .scalar() or 0)
+            
+            
+            (Parking.update(has_reported=True)
+            .where((Parking.has_reported == False) & (Parking.is_it_parked == False))
+            .execute())
+
+            
+
+            return True,parking, round(total_income, 2)
+        
+        except Exception as e:
+            print("1Erro ao gerar relatório:", e)
+            return False,[],0
+
 
     def Delete_parking(parking_id):
         return Parking.delete().where(Parking.id == parking_id).execute()
